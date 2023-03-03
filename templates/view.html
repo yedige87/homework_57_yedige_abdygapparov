@@ -2,6 +2,8 @@
 {% block title%}ToDo View{% endblock %}
 {% block menu %}
 <a href="{% url 'todo_add' %}">Add ToDo</a>
+<a href="{% url 'todo_edit' todo.id %}">Edit ToDo</a>
+<a href="{% url 'todo_delete' todo.id %}">Delete ToDo</a>
 {% endblock %}
 {% block content %}
 <h1>Подробный просмотр задачи</h1>
@@ -11,20 +13,16 @@
 </div>
 <div class="disp">
     <label class="label">End Date</label>
-    <input type="text" value="{{todo.date_todo}}" disabled>
+    <input type="text" value="{{todo.deadline}}" disabled>
 </div>
-<div class="disp">
-    <label class="label">State</label>
-    {% for state in states %}
-    {% if todo.state == state.state %}
-    <input type="text" value="{{state.rus}}" disabled>
-    {% endif %}
-    {% endfor %}
 
-</div>
 <div class="disp">
     <span class="label">Description</span>
     <textarea name="description" rows="10" cols="30" wrap="hard" disabled>"{{todo.description}}"</textarea>
+</div>
+<div class="disp">
+    <span class="label">Status</span>
+    <input name="status" rows="10" cols="30" wrap="hard" value="{{ todo.status }}" disabled>
 </div>
 {% endblock %}
 

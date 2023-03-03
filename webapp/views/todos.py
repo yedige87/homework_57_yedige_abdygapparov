@@ -1,9 +1,11 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.views.generic import TemplateView
 
+from webapp.forms import check_date
 from webapp.models import ToDo
-from webapp.views.test import check_date
+
 
 states = [{'id': '0', 'state': 'new', 'rus': 'Новая задача'},
           {'id': '1', 'state': 'processing', 'rus': 'В процессе выполнения'},
@@ -59,11 +61,6 @@ def edit_view(request: WSGIRequest, pk):
     # return redirect('todo_view', pk=todo.pk)
 
 
-def todo_view(request, pk):
-    todo = get_object_or_404(ToDo, pk=pk)
-    return render(request, 'view.html', context={'todo': todo, 'states': states})
-
-
 def delete_view(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     if request.method == 'GET':
@@ -71,3 +68,12 @@ def delete_view(request, pk):
     elif request.method == 'POST':
         todo.delete()
         return redirect('index')
+
+
+class ToDoView(TemplateView):
+    template_name = 'view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['todo'] = get_object_or_404(ToDo, pk=kwargs['pk'])
+        return context
