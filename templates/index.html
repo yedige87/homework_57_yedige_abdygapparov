@@ -31,7 +31,6 @@
             <th>Выбор задачи</th>
             <th>Заголовок</th>
             <th>Дата завершения</th>
-            <th>Состояние</th>
             <th>Подробнее</th>
         </tr>
         {% if todos %}
@@ -44,13 +43,7 @@
                 <input type="radio" name="task" id={{todo.id}} value={{todo.id}}>
             </td>
             <td>{{todo.title}}</td>
-            <td>{{todo.date_todo}}</td>
-            {% for state in states %}
-            {% if todo.state == state.state %}
-            <td> {{state.rus}}</td>
-            {% endif %}
-            {% endfor %}
-
+            <td>{{todo.deadline}}</td>
             <td><a href="{% url 'todo_view' todo.id %}">Подробнее... </a></td>
         </tr>
         {% endfor %}

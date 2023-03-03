@@ -3,70 +3,200 @@
   "model": "webapp.todo",
   "pk": 1,
   "fields": {
+    "status": "in_progress",
     "title": "План разработки системы для медицинского учреждения",
     "description": "Изучить потребности заказчика, структуру организации, методы и иструменты реализации, определить этапы и сроки их реализации. Разработать архитектуру проекта, определить комплекс задач, сроки их выполнения и потребность в специалистах",
-    "date_todo": "2023-03-31",
-    "state": "new"
+    "deadline": "2023-03-31",
+    "type": 1,
+    "positions": [
+      8,
+      1,
+      3,
+      7
+    ]
   }
 },
 {
   "model": "webapp.todo",
   "pk": 2,
   "fields": {
+    "status": "new",
     "title": "Согласовать договор с клиентом",
     "description": "Составить договор с указанием этапов работ, сроков их выполнения и оплаты заказчиком.",
-    "date_todo": "2023-04-30",
-    "state": "processing"
+    "deadline": "2023-04-30",
+    "type": 1,
+    "positions": [
+      8,
+      1,
+      3
+    ]
   }
 },
 {
   "model": "webapp.todo",
   "pk": 3,
   "fields": {
+    "status": "new",
     "title": "Разработать Базу Данных",
     "description": "Определить всевозможные параметры деятельности организации, взаимодействия с подразделениями, контрагентами, клиентами и прочими организациями.",
-    "date_todo": "2023-05-31",
-    "state": "new"
+    "deadline": "2023-05-31",
+    "type": 1,
+    "positions": [
+      1,
+      5,
+      7
+    ]
   }
 },
 {
   "model": "webapp.todo",
   "pk": 4,
   "fields": {
+    "status": "new",
     "title": "Определить задачи фронтенда и бэкэнда",
     "description": "На основе Базы Данных определить формы и информацию предоставляемую клиенту, формы ввода и скоординировать взаимодействие с бэкэндом.",
-    "date_todo": "2023-06-30",
-    "state": "new"
+    "deadline": "2023-06-30",
+    "type": 1,
+    "positions": [
+      1,
+      4,
+      5,
+      7
+    ]
   }
 },
 {
   "model": "webapp.todo",
   "pk": 5,
   "fields": {
+    "status": "new",
     "title": "Реализовать Этап №1. Заполнение Базы данных",
     "description": "На основе разработанных форм реализовать заполнение Базы данных клиента с привлечением и обучением работников клиента по заполнению актуальной информации. Тестирование разработок.",
-    "date_todo": "2023-08-31",
-    "state": "new"
+    "deadline": "2023-08-31",
+    "type": 1,
+    "positions": [
+      4,
+      5,
+      6
+    ]
   }
 },
 {
   "model": "webapp.todo",
   "pk": 6,
   "fields": {
+    "status": "new",
     "title": "Реализовать Этап №2. Внедрение системы",
     "description": "Установка программного обеспечения, обучение работников клиента работе с системой, разработка руководств, справочников и настольных инструкций.",
-    "date_todo": "2023-09-30",
-    "state": "new"
+    "deadline": "2023-09-30",
+    "type": 1,
+    "positions": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8
+    ]
   }
 },
 {
-  "model": "webapp.todo",
-  "pk": 10,
+  "model": "webapp.position",
+  "pk": 1,
   "fields": {
-    "title": "Task",
-    "description": "Test Ten\r\n\r\n  Dfbfdbdfg\r\nAdfdfdfdf\r\nBjsdsdd sdsdsdsd sdsdsd sdsds sdsdsd.\r\n  Cfdfdfd.",
-    "date_todo": "2023-04-15",
-    "state": "new"
+    "name": "Архитектор проекта",
+    "created_at": "2023-03-02T19:27:39.507Z",
+    "updated_at": "2023-03-02T19:27:39.507Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 2,
+  "fields": {
+    "name": "Бухгалтер",
+    "created_at": "2023-03-02T19:28:17.039Z",
+    "updated_at": "2023-03-02T19:28:17.039Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 3,
+  "fields": {
+    "name": "Первый руководитель",
+    "created_at": "2023-03-02T19:28:45.643Z",
+    "updated_at": "2023-03-02T19:28:45.643Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 4,
+  "fields": {
+    "name": "Разработчики",
+    "created_at": "2023-03-02T19:29:24.412Z",
+    "updated_at": "2023-03-02T19:29:24.413Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 5,
+  "fields": {
+    "name": "Специалист БД",
+    "created_at": "2023-03-02T19:29:50.246Z",
+    "updated_at": "2023-03-02T19:29:50.246Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 6,
+  "fields": {
+    "name": "Специалисты заказчика",
+    "created_at": "2023-03-02T19:30:11.990Z",
+    "updated_at": "2023-03-02T19:30:11.990Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 7,
+  "fields": {
+    "name": "Менеджер проекта",
+    "created_at": "2023-03-02T19:31:19.906Z",
+    "updated_at": "2023-03-02T19:31:19.906Z"
+  }
+},
+{
+  "model": "webapp.position",
+  "pk": 8,
+  "fields": {
+    "name": "Юрист",
+    "created_at": "2023-03-02T19:31:47.506Z",
+    "updated_at": "2023-03-02T19:31:47.506Z"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 1,
+  "fields": {
+    "type": "Task",
+    "created_at": "2023-03-02T21:33:11.725Z",
+    "updated_at": "2023-03-02T21:33:11.725Z"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 2,
+  "fields": {
+    "type": "Bug",
+    "created_at": "2023-03-02T21:33:43.161Z",
+    "updated_at": "2023-03-02T21:33:43.161Z"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 3,
+  "fields": {
+    "type": "Enhancement",
+    "created_at": "2023-03-02T21:34:18.061Z",
+    "updated_at": "2023-03-02T21:34:18.061Z"
   }
 }
 ]
