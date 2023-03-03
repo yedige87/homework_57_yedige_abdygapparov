@@ -43,7 +43,7 @@ class ToDoEditView(TemplateView):
             form.save()
             return redirect('todo_view', pk=todo.pk)
         return render(request, 'edit.html', context={'form': form, 'todo': todo})
-    
+
 
 def delete_view(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)

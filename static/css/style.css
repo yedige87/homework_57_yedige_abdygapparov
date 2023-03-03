@@ -30,6 +30,14 @@ body{
     text-decoration: none;
     border-radius:10%;
 }
+.cancel-button{
+    background: blue;
+    color: white;
+    padding: 5px 10px;
+    margin: 0px;
+    text-decoration: none;
+    border-radius:10%;
+}
 .menu {
     font-size: 14px;
     line-height: 1;

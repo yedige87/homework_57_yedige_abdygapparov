@@ -9,6 +9,6 @@
        <form  method="POST"  action="{% url 'todo_delete' todo.pk %}"  class="text-center">
             {%  csrf_token  %}
              <p><input  type="submit"  value="Удалить"></p>
-             <p><a  href="{% url 'todo_view' todo.pk %}">Отмена</a></p>
+             <p><a class="cancel-button" href="{% url 'todo_view' todo.pk %}">Отмена</a></p>
        </form>
 {% endblock %}
