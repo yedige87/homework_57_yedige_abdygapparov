@@ -1,0 +1,21 @@
+{% csrf_token %}
+{{ form.as_p }}
+<div class="disp">
+    <label class="label">State</label>
+    <select class="state" name="state" required>
+        <option disabled>Выберите статус</option>
+        {% for state in states %}
+        {% if todo.state == state.state %}
+        <option selected name="state" class="state" value="{{state.state}}">{{state.rus}}</option>
+        {% else %}
+        <option name="state" class="state" value="{{state.state}}">{{state.rus}}</option>
+        {% endif %}
+        {% endfor %}
+        {% if errors %}
+        <p class="correct">Корректно!</p>
+        {% endif %}
+    </select>
+</div>
+<div class="disp">
+    <input type="submit" value="{{ button_text }}">
+</div>

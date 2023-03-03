@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title%}Delete todo{% endblock %}
+{% block menu %}
+    <a href="{% url 'todo_view' todo.pk %}">Add ToDo</a>
+{% endblock %}
+{% block content %}
+        <h1>Удаление задачи</h1><br/>
+       <h2>Вы действительно хотите удалить задачу "{{  todo  }}"?</h2>
+       <form  method="POST"  action="{% url 'todo_delete' todo.pk %}"  class="text-center">
+            {%  csrf_token  %}
+             <p><input  type="submit"  value="Удалить"></p>
+             <p><a  href="{% url 'todo_view' todo.pk %}">Отмена</a></p>
+       </form>
+{% endblock %}

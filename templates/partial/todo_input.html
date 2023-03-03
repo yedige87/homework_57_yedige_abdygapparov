@@ -1,0 +1,54 @@
+{% csrf_token %}
+<div class="disp">
+    <label class="label">Title</label>
+    <input name="title" type="text" value="{{todo.title}}">
+    {% if errors %}
+    {% if errors.title %}
+    <p class="error"> {{errors.title}}</p>
+    {% else %}
+    <p class="correct">Корректно!</p>
+    {% endif %}
+    {% endif %}
+</div>
+<div class="disp">
+    <label class="label">End Date</label>
+    <input name="date_todo" type="text" value="{{todo.date_todo}}">
+    {% if errors %}
+    {% if errors.date_todo %}
+    <p class="error"> {{errors.date_todo}}</p>
+    {% else %}
+    <p class="correct">Корректно!</p>
+    {% endif %}
+    {% endif %}
+</div>
+<div class="disp">
+    <label class="label">State</label>
+    <select class="state" name="state" required>
+        <option disabled>Выберите статус</option>
+        {% for state in states %}
+        {% if todo.state == state.state %}
+        <option selected name="state" class="state" value="{{state.state}}">{{state.rus}}</option>
+        {% else %}
+        <option name="state" class="state" value="{{state.state}}">{{state.rus}}</option>
+        {% endif %}
+        {% endfor %}
+        {% if errors %}
+        <p class="correct">Корректно!</p>
+        {% endif %}
+    </select>
+</div>
+<div class="disp">
+    <span class="label">Description</span>
+    <textarea name="description" rows="10" cols="30">{{todo.description}}</textarea>
+    {% if errors %}
+    {% if errors.description %}
+    <p class="error"> {{errors.description}}</p>
+    {% else %}
+    <p class="correct">Корректно!</p>
+    {% endif %}
+    {% endif %}
+</div>
+<div class="disp">
+    <input type="submit" value="{{ button_text }}">
+</div>
+

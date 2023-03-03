@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block menu %}
+<a href="{% url 'todo_add' %}">Add ToDo</a>
+{% endblock %}
+{% block content %}
+<h1>Список задач (ToDo)</h1>
+<form action="{% url 'index' %}" method="POST">
+    {% csrf_token %}
+    <div class="row">
+        {% if actions %}
+        <label for="">Действие для выбранной задачи:</label>
+        <select class="action" name="action">
+            {% for action in actions %}
+            <option value="{{action.id}}">{{action.action}}</option>
+            {% endfor %}
+        </select>
+        {% else %}
+        <p>Actions is empty</p>
+        {%endif%}
+        <input value="Выполнить" type="submit">
+    </div>
+
+    <br/>
+    <table>
+        <tbody>
+        <tr class="head">
+            <th>
+                <button name="delete_button" value="click">Удалить помеченные</button>
+            </th>
+            <th>Выбор задачи</th>
+            <th>Заголовок</th>
+            <th>Дата завершения</th>
+            <th>Состояние</th>
+            <th>Подробнее</th>
+        </tr>
+        {% if todos %}
+        {% for todo in todos %}
+        <tr>
+            <td>
+                <input type="checkbox" name="check_del" pk={{todo.id}} value={{todo.id}}>
+            </td>
+            <td>
+                <input type="radio" name="task" id={{todo.id}} value={{todo.id}}>
+            </td>
+            <td>{{todo.title}}</td>
+            <td>{{todo.date_todo}}</td>
+            {% for state in states %}
+            {% if todo.state == state.state %}
+            <td> {{state.rus}}</td>
+            {% endif %}
+            {% endfor %}
+
+            <td><a href="{% url 'todo_view' todo.id %}">Подробнее... </a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p> To Do list is empty </p>
+        {% endif %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}
+
+
+
