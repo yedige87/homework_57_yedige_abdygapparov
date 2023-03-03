@@ -3,6 +3,6 @@
 {% block content %}
 <h1>Редактирование задачи</h1>
 <form action="{% url 'todo_edit' todo.id %}" method="POST">
-    {% include 'partial/todo_input.html' with button_text="Обновить" %}
+    {% include 'partial/form_input.html' with button_text="Обновить" %}
 </form>
 {% endblock %}

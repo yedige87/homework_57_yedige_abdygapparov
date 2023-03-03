@@ -37,29 +37,23 @@ def add_view(request: WSGIRequest):
     return redirect(reverse('todo_view', kwargs={'pk': todo.pk}))
 
 
-def edit_view(request: WSGIRequest, pk):
-    todo = get_object_or_404(ToDo, pk=pk)
-    if request.method == "GET":
-        return render(request, 'edit.html', context={'todo': todo, 'states': states})
-    print(request.POST)
-    errors = {}
-    todo.title = request.POST.get('title')
-    todo.date_todo = request.POST.get('date_todo')
-    todo.state = request.POST.get('state')
-    todo.description = request.POST.get('description')
-    if todo.title == '':
-        errors['title'] = ' Это поле должно быть заполнено!'
-    result = check_date(todo.date_todo)
-    if result != ' Корректно!':
-        errors['date_todo'] = result
-    if todo.description == '':
-        errors['description'] = ' Это поле должно быть заполнено!'
-    if errors:
-        return render(request, 'edit.html', context={'todo': todo, 'states': states, 'errors': errors})
-    todo.save()
-    return redirect(reverse('todo_view', kwargs={'pk': todo.pk}))
-    # return redirect('todo_view', pk=todo.pk)
+class ToDoEditView(TemplateView):
+    template_name = 'edit.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['todo'] = get_object_or_404(ToDo, pk=kwargs['pk'])
+        context['form'] = ToDoForm(instance=context['todo'])
+        return context
+
+    def post(self, request, *args, **kwargs):
+        todo = get_object_or_404(ToDo, pk=kwargs['pk'])
+        form = ToDoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect('todo_view', pk=todo.pk)
+        return render(request, 'edit.html', context={'form': form, 'todo': todo})
+    
 
 def delete_view(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
